@@ -1,0 +1,17 @@
+---
+
+- name: verify $project_version provided 
+  action: command /bin/false
+  when_unset: $project_version
+
+- name: stop application
+  shell: /home/jenkins/application.sh stop 
+
+- name: delete artifact
+  shell: rm /home/jenkins/cicd-lab-backend*.jar
+
+- name: copy artifact from Nexus
+  get_url: url=http://192.168.33.10:8081/path/artifact$project_version dest=/home/jenkins
+
+- name: start application
+  shell: /home/jenkins/application.sh start 
