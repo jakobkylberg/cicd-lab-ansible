@@ -1,0 +1,5 @@
+[test]
+192.168.33.20
+
+[test:vars]
+project_version=1.0
