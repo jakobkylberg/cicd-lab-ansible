@@ -1,5 +1,5 @@
 ---
-- hosts: {{environment}}
+- hosts: "{{environment}}"
   remote_user: jenkins
   tasks:
 
