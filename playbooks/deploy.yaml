@@ -2,9 +2,6 @@
 - hosts: test
   remote_user: jenkins
   tasks:
-    - name: verify $project_version provided
-      command: /bin/false
-      when_unset: $project_version
 
     - name: stop application
       shell: /home/jenkins/application.sh stop
