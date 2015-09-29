@@ -1,17 +1,19 @@
 ---
+- hosts: test
+  remote_user: jenkins
 
-- name: verify $project_version provided 
-  command: /bin/false
-  when_unset: $project_version
+  - name: verify $project_version provided
+    command: /bin/false
+    when_unset: $project_version
 
-- name: stop application
-  shell: /home/jenkins/application.sh stop 
+  - name: stop application
+    shell: /home/jenkins/application.sh stop
 
-- name: delete artifact
-  shell: rm /home/jenkins/cicd-lab-backend*.jar
+  - name: delete artifact
+    shell: rm /home/jenkins/cicd-lab-backend*.jar
 
-- name: copy artifact from Nexus
-  get_url: url=http://192.168.33.10:8081/nexus/service/local/repositories/releases/content/se/omegapoint/cicd-lab-backend/1.0.$project_version/cicd-lab-backend-1.0.$project_version.jar dest=/home/jenkins
+  - name: copy artifact from Nexus
+    get_url: url=http://192.168.33.10:8081/nexus/service/local/repositories/releases/content/se/omegapoint/cicd-lab-backend/1.0.$project_version/cicd-lab-backend-1.0.$project_version.jar dest=/home/jenkins
 
-- name: start application
-  shell: /home/jenkins/application.sh start 
+  - name: start application
+    shell: /home/jenkins/application.sh start
