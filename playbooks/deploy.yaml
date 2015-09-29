@@ -4,13 +4,15 @@
   tasks:
 
     - name: stop application
-      shell: /home/jenkins/application.sh stop
+      shell: /opt/cicd-lab-backend/application.sh stop
 
     - name: delete artifact
-      shell: rm /home/jenkins/cicd-lab-backend*.jar
+      shell: rm /opt/cicd-lab-backend/cicd-lab-backend*.jar
 
     - name: copy artifact from Nexus
-      get_url: url=http://192.168.33.10:8081/nexus/service/local/repositories/releases/content/se/omegapoint/cicd-lab-backend/1.0.$project_version/cicd-lab-backend-1.0.$project_version.jar dest=/home/jenkins
+      get_url:
+        url=http://192.168.33.10:8081/nexus/service/local/repositories/releases/content/se/omegapoint/cicd-lab-backend/1.0.$project_version/cicd-lab-backend-1.0.$project_version.jar
+        dest=/opt/cicd-lab-backend
 
     - name: start application
-      shell: /home/jenkins/application.sh start
+      shell: /opt/cicd-lab-backend/application.sh start
