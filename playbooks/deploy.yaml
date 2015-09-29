@@ -1,7 +1,7 @@
 ---
 
 - name: verify $project_version provided 
-  action: command /bin/false
+  command: /bin/false
   when_unset: $project_version
 
 - name: stop application
