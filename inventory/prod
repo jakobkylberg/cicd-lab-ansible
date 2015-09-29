@@ -1,5 +1,0 @@
-[prod]
-192.168.33.30
-
-[prod:vars]
-project_version=1.0
