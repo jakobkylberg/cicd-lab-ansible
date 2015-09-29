@@ -4,7 +4,7 @@
   tasks:
 
     - name: stop application
-      shell: /opt/cicd-lab-backend/application.sh stop
+      service: name=cicd-lab-backend state=stopped
 
     - name: delete artifact
       shell: rm /opt/cicd-lab-backend/cicd-lab-backend*.jar
@@ -16,4 +16,4 @@
         dest=/opt/cicd-lab-backend
 
     - name: start application
-      shell: /opt/cicd-lab-backend/application.sh start
+      service: name=cicd-lab-backend state=started
