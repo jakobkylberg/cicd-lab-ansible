@@ -6,14 +6,8 @@
     - name: stop application
       service: name=cicd-lab-backend state=stopped
 
-    - name: delete artifact
-      shell: rm /opt/cicd-lab-backend/cicd-lab-backend*.jar
-      ignore_errors: yes
+# task: delete artifact
 
-    - name: copy artifact from Nexus
-      get_url:
-        url=http://192.168.33.10:8081/nexus/service/local/repositories/releases/content/se/omegapoint/cicd-lab-backend/1.0.{{build_version}}/cicd-lab-backend-1.0.{{build_version}}.jar
-        dest=/opt/cicd-lab-backend
+# task: copy artifact (from Jenkins or Nexus)
 
-    - name: start application
-      service: name=cicd-lab-backend state=started
+# task: start application
